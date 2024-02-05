@@ -1,23 +1,78 @@
 <!DOCTYPE html>
+<html lang="es">
 
-<html>
-    
 <head>
-
+    <meta charset="UTF-8">
     <title>HORIZON</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-
-
 </head>
 
 <body>
+    <header>
+        <div class="encabezado"> 
+            <img src="Images/logito.png" class="logo">
+            <ul>
+                <li><a href="#" onclick="navigateTo('home.html')">Home</a></li>
+                <li><a href="about.html" onclick="navigateTo('about.html')">About</a></li>
+                <li><a href="#" onclick="navigateTo('services.html')">Services</a></li>
+                <li><a href="#" onclick="navigateTo('contact.html')">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div id="flightBookingApp">
+        <label for="regreso">
+            <input id="regreso" type="radio" name="tripType" v-model="flight.tripType" value="ida_regreso"> Ida y Regreso
+        </label><br>
+    
+        <label for="ida">
+            <input id="ida" type="radio" name="tripType" v-model="flight.tripType" value="solo_ida"> Solo Ida
+        </label><br>
+    
+        <div>
+            <label for="origin">Origen:</label>
+            <input type="text" id="origin" v-model="flight.origin">
+        </div>
+    
+        <div>
+            <label for="destination">Destino:</label>
+            <input type="text" id="destination" v-model="flight.destination">
+        </div>
+    
+        <div>
+            <label for="departureDate">Fecha de Ida:</label>
+            <input type="date" id="departureDate" v-model="flight.departureDate">
+        </div>
+    
+        <div v-if="flight.tripType === 'ida_regreso'">
+            <label for="returnDate">Fecha de Regreso:</label>
+            <input type="date" id="returnDate" v-model="flight.returnDate">
+        </div>
+    
+        <button @click="searchFlights">
+            <i class="fas fa-search"></i> <!-- Icono de lupa -->
+        </button>
+    
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <div class="introduce"></div>
+            <div class="thumbnail-list">
+            <div class="wrapper"></div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="next-button"></button>
+        <span class="line"></span>
+        <span class="ordinal-number"></span>
+    </div>
+
+<script src="index.js"></script>
+
+    <footer></footer>
 
 </body>
-
-
-<footer>
-
-</footer>
-
 
 </html>
